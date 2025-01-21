@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome, {{ user.full_name }}!</h2>
+        <p>Email: {{ user.email }}</p>
+        <p>Mobile: {{ user.mobile if user.mobile else 'N/A' }}</p>
+        <p>Username: {{ user.auth.username }}</p>
+        <p>User Type: <strong>{{ user.auth.user_type }}</strong></p>
+
+        {% if user.auth.user_type == 'Admin' %}
+            <p>You have administrative privileges.</p>
+            <a href="{{ url_for('main.admin_dashboard') }}">Go to Admin Dashboard</a>
+        {% else %}
+            <p>Welcome to your user dashboard.</p>
+            <a href="{{ url_for('main.user_dashboard') }}">Go to User Dashboard</a>
+        {% endif %}
+
+        <a href="{{ url_for('main.logout') }}" class="logout-btn">Logout</a>
+    </div>
+</body>
+</html>

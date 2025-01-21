@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Admin Dashboard</h2>
+        <p>Welcome, {{ user.full_name }}!</p>
+        <p>You have administrative privileges.</p>
+
+        <ul>
+            <li><a href="#">Manage Users</a></li>
+            <li><a href="#">View Transactions</a></li>
+            <li><a href="#">System Reports</a></li>
+        </ul>
+
+        <a href="{{ url_for('main.home') }}">Back to Home</a>
+        <a href="{{ url_for('main.logout') }}" class="logout-btn">Logout</a>
+    </div>
+</body>
+</html>
